@@ -20,11 +20,62 @@
             <p class="hero__info-p">
                 Descubre un mundo de verdor y belleza. Encuentra la planta perfecta para tu espacio y deja que la naturaleza transforme tu hogar. Nuestro equipo está aquí para ayudarte en cada paso. ¡Comienza tu viaje verde hoy mismo!
             </p>
-            <a class="hero__info-a" href="#">
+            <a class="hero__info-a" href="#store">
                 <button class="hero__info-aBtn">Ir a la tienda</button>
             </a>
         </div>
     </div>
+
+    <main>
+        <header>
+            <nav class="navbar">
+                <a class="navbar__logo" href="index.html">FlourishN°Ok</a>
+                <div class="navbar__links">
+                    <a href="#">Home</a>
+                    <a href="#store">Productos</a>
+                    <a href="#">Sobre nosotros</a>
+                    <a href="#">Preguntas frecuentes</a>
+                    <a href="#">Contacto</a>
+                </div>
+                <div class="hamburger">
+                    <div class="hamburger__line hamburger__line1"></div>
+                    <div class="hamburger__line hamburger__line2"></div>
+                    <div class="hamburger__line hamburger__line3"></div>
+                </div>
+            </nav>
+        </header>
+
+        <section id="store" class="store">
+            <h4 class="store__title">Nuestros productos</h4>
+            <div class="store__filters">
+                <div class="store__filters-orderBy">
+                    <p class="store__filters-p">Ordenar por</p>
+                    <select class="store__filters-orderBy-select">
+                        <option selected>---</option>
+                        <option>Precio: Menor a mayor</option>
+                        <option>Precio: Mayor a menor</option>
+                    </select>
+                </div>
+                <div class="store__filters-size">
+                    <p class="store__filters-p">Tamaño</p>
+                    <div class="store__filters-sizeBtns">
+                        <button class="store__filters-btn">Chicas</button>
+                        <button class="store__filters-btn">Medianas</button>
+                        <button class="store__filters-btn">Grandes</button>
+                    </div>
+                </div>
+                <div class="store__filters-lm">
+                    <p class="store__filters-p">Necesidad lumínica</p>
+                    <div class="store__filters-lmBtns">
+                        <button class="store__filters-btn">Luz directa</button>
+                        <button class="store__filters-btn">Semi-sombra</button>
+                        <button class="store__filters-btn">Sombra</button>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
 
     <script src="scripts/script.js"></script>
 </body>

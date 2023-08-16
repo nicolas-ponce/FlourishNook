@@ -9,6 +9,14 @@
         width: 65%;
         margin: 3.6rem 0;
     }
+
+
+    .navbar__links {
+        display: none;
+    }
+    .hamburger {
+        display: flex;
+    }
 }
 
 /* Medium: 768px */

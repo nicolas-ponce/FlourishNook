@@ -17,6 +17,13 @@
     .hamburger {
         display: flex;
     }
+
+
+
+
+    .store__cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
 /* Medium: 768px */
@@ -44,6 +51,10 @@
         width: 90%;
         margin: 3.6rem auto;
     }
+
+    .store__cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 /* Small: 576px */
@@ -60,5 +71,10 @@
         flex-direction: column;
         justify-content: center;
         text-align: center;
+    }
+
+    
+    .store__cards {
+        grid-template-columns: 1fr
     }
 }

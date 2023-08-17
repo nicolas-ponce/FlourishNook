@@ -41,7 +41,9 @@ h3::selection,
 h4::selection,
 h5::selection,
 h6::selection,
-p::selection {
+p::selection,
+span::selection,
+a::selection {
     color: var(--white);
     background-color: var(--darkGreen);
 }
@@ -218,6 +220,41 @@ header {
     transform-origin: left;
 }
 
+.shopping-cart {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+.shopping-cart__icon {
+    width: 4.8rem;
+}
+.shopping-cart__circle {
+    width: 2.4rem;
+    height: 2.4rem;
+    background-color: var(--darkGreen);
+    opacity: .9;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    transition: transform .2s;
+}
+.shopping-cart__number {
+    margin: 0;
+    font-family: var(--subHeadingFont);
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--creamWhite);
+}
+.shopping-cart:hover > .shopping-cart__circle {
+    transform: scale(1.2);
+}
+
 
 .hamburger {
     width: 6rem;
@@ -269,12 +306,15 @@ header {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 4.4rem;
+    flex-wrap: wrap;
+    column-gap: 4rem;
+    margin-bottom: 1.2rem;
 }
 
 
 .store__filters-p {
     font-size: 1.6rem;
+    margin: 1.2rem 0;
 }
 
 
@@ -285,7 +325,10 @@ header {
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
     gap: 1.2rem;
+    row-gap: 0;
+    margin-top: .4rem;
 }
 
 
@@ -313,4 +356,92 @@ header {
 .store__filters-btn:focus {
     background-color: var(--green);
     color: var(--white);
+}
+
+
+
+.store__cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin: 1.2rem auto 0;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    border: 1px solid var(--darkGreen);
+    border-radius: .8rem;
+    padding: 1.6rem;
+}
+
+.card__img {
+    width: 80%;
+    align-self: center;
+    border: 1px solid var(--darkGreen);
+    margin: 0;
+    border-radius: .8rem;
+}
+
+.card__title {
+    margin: 1.6rem 0;
+
+}
+
+.card__name {
+    margin: 0;
+}
+
+.card__sciName {
+    margin: -.8rem auto 0;
+    font-size: 1.6rem;
+    font-style: italic;
+}
+
+.card__description {
+    margin: 0;
+    font-size: 1.6rem;
+}
+
+.card__features {
+    margin: 1.6rem 0;
+}
+.card__size,
+.card__lm {
+    font-size: 1.6rem;
+    margin: 0;
+}
+
+.card__priceBtn {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+}
+
+.card__price {
+    margin: 0;
+    font-family: var(--subHeadingFont);
+}
+.card__add-to-cartBtn {
+    border: none;
+    padding: .8rem 1.2rem;
+    color: var(--darkGreen);
+    background-color: var(--creamWhite);
+    border-radius: .8rem;
+    font-family: var(--subHeadingFont);
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    letter-spacing: .05rem;
+    transition: all .2s;
+}
+
+.card__add-to-cartBtn:hover {
+    color: var(--creamWhite);
+    background-color: var(--darkGreen);
 }

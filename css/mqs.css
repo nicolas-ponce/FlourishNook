@@ -28,6 +28,9 @@
 
 /* Medium: 768px */
 @media (max-width: 768px) {
+
+    /* Hero */
+
     .hero__img {
         object-fit: cover;
         object-position: center left;
@@ -52,10 +55,49 @@
         margin: 3.6rem auto;
     }
 
+
+    /* Store */
+
     .store__cards {
         grid-template-columns: repeat(2, 1fr);
     }
+
+
+    /* About Us */
+
+    .aboutUs__div1-bck,
+    .aboutUs__div2-bck,
+    .aboutUs__div3-bck {
+        min-height: 22rem;
+        padding: 4rem 0;
+    }
+
+    .aboutUs__div1,
+    .aboutUs__div2 {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+    .aboutUs__div3 {
+        max-width: 90%;
+    }
+
+    
+    .aboutUs__div1-p,
+    .aboutUs__div2-p {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+        text-align: center;
+    }
+    .aboutUs__div1-img {
+        grid-row: 1 / 2;
+    }
+    
+    .aboutUs__div1-img,
+    .aboutUs__div2-img {
+        width: 55%;
+    }
 }
+
 
 /* Small: 576px */
 
@@ -76,5 +118,12 @@
     
     .store__cards {
         grid-template-columns: 1fr
+    }
+
+
+    /* About Us */
+    .aboutUs__div1-img,
+    .aboutUs__div2-img {
+        width: 90%;
     }
 }

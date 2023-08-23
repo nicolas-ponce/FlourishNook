@@ -26,31 +26,32 @@
         </div>
     </div>
 
-    <main>
-        <header>
-            <nav class="navbar">
-                <a class="navbar__logo" href="#">FlourishN°Ok</a>
-                <div class="navbar__links">
-                    <a href="#">Home</a>
-                    <a href="#store">Productos</a>
-                    <a href="#aboutUs">Sobre nosotros</a>
-                    <a href="#QNA">Preguntas frecuentes</a>
-                    <a href="#contactUs">Contacto</a>
+    <header>
+        <nav class="navbar">
+            <a class="navbar__logo" href="#">FlourishN°Ok</a>
+            <div class="navbar__links">
+                <a href="#">Home</a>
+                <a href="#store">Productos</a>
+                <a href="#aboutUs">Sobre nosotros</a>
+                <a href="#QNA">Preguntas frecuentes</a>
+                <a href="#contactUs">Contacto</a>
+            </div>
+            <div class="shopping-cart">
+                <img class="shopping-cart__icon" src="assets/img/icons/wheelbarrow.png">
+                <div class="shopping-cart__circle">
+                    <p class="shopping-cart__number">2</p>
                 </div>
-                <div class="shopping-cart">
-                    <img class="shopping-cart__icon" src="assets/img/icons/wheelbarrow.png">
-                    <div class="shopping-cart__circle">
-                        <p class="shopping-cart__number">2</p>
-                    </div>
-                </div>
+            </div>
 
-                <div class="hamburger">
-                    <div class="hamburger__line hamburger__line1"></div>
-                    <div class="hamburger__line hamburger__line2"></div>
-                    <div class="hamburger__line hamburger__line3"></div>
-                </div>
-            </nav>
-        </header>
+            <div class="hamburger">
+                <div class="hamburger__line hamburger__line1"></div>
+                <div class="hamburger__line hamburger__line2"></div>
+                <div class="hamburger__line hamburger__line3"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
 
         <section id="store" class="store">
             <h4 class="store__title">Nuestros productos</h4>
@@ -268,23 +269,36 @@
                         <a href="https://api.whatsapp.com/send?phone=+5491132681501&text=Hola!%20Quiero%20hacer%20una%20consulta%20sobre%20FlourishN%C2%B0Ok:" target="_blank">+54 9 11 3268-1501</a>
                     </div>
                     <div class="contactUs__info-map">
-                        <img src="assets/img/icons/pin.png" alt="pin.png">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3285.9755809337776!2d-59.16264062481609!3d-34.554173654882376!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bc7fda1f163b9f%3A0x72a1c9443aa059ee!2sUruguay%202658%2C%20B6700%20Luj%C3%A1n%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses-419!2sar!4v1692741147177!5m2!1ses-419!2sar" width="300" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3285.9755809337776!2d-59.16264062481604!3d-34.554173654882376!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bc7fda1f163b9f%3A0x72a1c9443aa059ee!2sUruguay%202658%2C%20B6700%20Luj%C3%A1n%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses-419!2sar!4v1692818889098!5m2!1ses-419!2sar" width="350" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
 
                 <form class="contactUs__form" method="post">
-                    <input type="text" id="name" placeholder="Nombre">
+                    <input class="contactUs__form-nameInput" type="text" id="name" placeholder="Nombre">
     
-                    <input type="email" id="email" placeholder="Email">
+                    <input class="contactUs__form-emailInput" type="email" id="email" placeholder="Email">
     
-                    <textarea placeholder="Mensaje o consulta">
-    
-                    </textarea>
+                    <textarea class="contactUs__form-msgInput" placeholder="Mensaje o consulta"></textarea>
+
+                    <input class="contactUs__form-btn" type="submit" value="Enviar">
                 </form>
             </div> <!-- div contactUs__info-form -->
         </section>
     </main>
+
+    <footer>
+        <nav class="footer__navbar">
+            <a class="footer__navbar-logo" href="#">FlourishN°Ok</a>
+
+            <p class="footer__navbar-p">Creado por Nicolás Ponce. Integrador JavaScript NUCBA. 2023</p>
+
+            <div class="footer__navbar-icons">
+                <img src="assets/img/icons/html.png">
+                <img src="assets/img/icons/css.png">
+                <img src="assets/img/icons/javascript.png">
+            </div>
+        </nav>
+    </footer>
 
     <script src="scripts/script.js"></script>
 </body>

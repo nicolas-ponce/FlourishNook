@@ -19,10 +19,23 @@
     }
 
 
-
-
     .store__cards {
         grid-template-columns: repeat(3, 1fr);
+    }
+
+
+
+    /* ContactUs */
+
+    .contactUs__form-emailInput,
+    .contactUs__form-nameInput,
+    .contactUs__form-msgInput,
+    .contactUs__form-btn {
+        width: 90%;
+    }
+
+    .contactUs__info-map iframe{
+        width: 25rem;
     }
 }
 
@@ -34,7 +47,7 @@
     .hero__img {
         object-fit: cover;
         object-position: center left;
-        filter: blur(.8rem);
+        filter: blur(1rem);
     }
 
     .hero__info {
@@ -96,6 +109,24 @@
     .aboutUs__div2-img {
         width: 55%;
     }
+
+
+
+    /* ContactUs */
+
+    .contactUs__info-form {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(2, 1fr);
+    }
+
+
+    .contactUs__info-map iframe{
+        width: 35rem;
+    }
+
+    .contactUs__form {
+        border-radius: 0 0 .8rem .8rem;
+    }
 }
 
 
@@ -115,6 +146,22 @@
         text-align: center;
     }
 
+    .hero__info-Heading {
+        font-size: 6rem;
+    }
+    .hero__info-subHeading {
+        font-size: 3.2rem;
+    }
+    
+
+    .navbar__logo {
+        font-size: 2.4rem;
+    }
+
+    .shopping-cart__icon {
+        width: 4rem;
+    }
+
     
     .store__cards {
         grid-template-columns: 1fr
@@ -125,5 +172,24 @@
     .aboutUs__div1-img,
     .aboutUs__div2-img {
         width: 90%;
+    }
+
+
+    /* ContactUs */
+
+    .contactUs__info-form {
+        width: 100%;
+    }
+
+    .contactUs__info-map iframe{
+        width: 25rem;
+    }
+
+    .footer__navbar-logo {
+        font-size: 2rem;
+    }
+
+    .footer__navbar-icons img {
+        width: 2rem;
     }
 }

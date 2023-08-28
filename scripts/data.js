@@ -71,62 +71,62 @@ const plants = [
     },
     {
         id: 8,
-        name: "Jacinto",
-        sciName: "Hyacinthus",
-        description: "",
-        lm: "Luz directa",
-        size: "Chica",
-        price: ,
-        image: "../assets/img/plants/.png"
+        name: "Planta araña",
+        sciName: "Chlorophytum comosum",
+        description: "Hojas de encanto duradero. Belleza natural en transformación. Infunde tu entorno con su singularidad. Adéntrate en el mundo de las Planta Araña.",
+        lm: "Sombra",
+        size: "Mediana",
+        price: 1899,
+        image: "../assets/img/plants/planta-ara.jpg"
     },
     {
         id: 9,
-        name: "Jacinto",
-        sciName: "Hyacinthus",
-        description: "",
-        lm: "Luz directa",
-        size: "Chica",
-        price: ,
-        image: "../assets/img/plants/.png"
+        name: "Lirio de la Paz",
+        sciName: "Spathiphyllum",
+        description: "Paz en cada pétalo. Belleza natural que transforma. Llena tu espacio con su gracia única. Adéntrate en el mundo del Lirio de la Paz",
+        lm: "Sombra",
+        size: "Mediana",
+        price: 3199,
+        image: "../assets/img/plants/lirio-de-la-paz.jpeg"
     },
     {
         id: 10,
-        name: "Jacinto",
-        sciName: "Hyacinthus",
-        description: "",
-        lm: "Luz directa",
-        size: "Chica",
-        price: ,
-        image: "../assets/img/plants/.png"
+        name: "Calathea",
+        sciName: "Marantaceae",
+        description: "Pinceladas de elegancia que cambian constantemente. Belleza natural en transformación. Llena tu espacio con su encanto único. Sumérgete en el mundo de las Calatheas.",
+        lm: "Sombra",
+        size: "Grande",
+        price: 5349,
+        image: "../assets/img/plants/calathea.webp"
     },
     {
         id: 11,
-        name: "Jacinto",
-        sciName: "Hyacinthus",
-        description: "",
-        lm: "Luz directa",
-        size: "Chica",
-        price: ,
-        image: "../assets/img/plants/.png"
+        name: "Helecho de Maidenhair",
+        sciName: "Adiantum raddianum",
+        description: "Explosión de follaje espumoso. Belleza natural en constante transformación. Infunde tu espacio con su encanto único. Adéntrate en el mundo de los Helechos de Maidenhair.",
+        lm: "Sombra",
+        size: "Grande",
+        price: 4799,
+        image: "../assets/img/plants/helecho-de-maidenhair.jpg"
     },
     {
         id: 12,
-        name: "Jacinto",
-        sciName: "Hyacinthus",
-        description: "",
-        lm: "Luz directa",
+        name: "Árbol de Jade",
+        sciName: "Crassula ovata",
+        description: "Luminosidad que trasciende. Belleza natural en continua metamorfosis. Colma tu espacio con su encanto singular. Explora el intrigante universo de los Árboles de Jade.",
+        lm: "Sombra",
         size: "Chica",
-        price: ,
-        image: "../assets/img/plants/.png"
+        price: 1199,
+        image: "../assets/img/plants/arbol-de-jade.jpg"
     },
     {
         id: 13,
-        name: "Jacinto",
-        sciName: "Hyacinthus",
-        description: "",
-        lm: "Luz directa",
+        name: "Filodendro de hoja de corazón",
+        sciName: "Philodendron scandens",
+        description: "Vitalidad en constante latir. Belleza natural en evolución perpetua. Llena tu espacio con su encanto distintivo. Sumérgete en el mágico mundo de los Filodendros de Hoja de Corazón.",
+        lm: "Sombra",
         size: "Chica",
-        price: ,
-        image: "../assets/img/plants/.png"
+        price: 2999,
+        image: "../assets/img/plants/filodendro-hoja-corazon.jpg"
     },
 ]

@@ -7,7 +7,8 @@ const plants = [
         lm: "Luz directa",
         size: "Chica",
         price: 2399,
-        image: "../assets/img/plants/jacinto.png"
+        image: "../assets/img/plants/jacinto.png",
+        quantity: 1
     },
     {
         id: 2,
@@ -17,7 +18,8 @@ const plants = [
         lm: "Luz directa",
         size: "Grande",
         price: 4899,
-        image: "../assets/img/plants/rosas.jpg"
+        image: "../assets/img/plants/rosas.jpg",
+        quantity: 1
     },
     {
         id: 3,
@@ -27,7 +29,8 @@ const plants = [
         lm: "Luz directa",
         size: "Grande",
         price: 3599,
-        image: "../assets/img/plants/veranera.webp"
+        image: "../assets/img/plants/veranera.webp",
+        quantity: 1
     },
     {
         id: 4,
@@ -37,7 +40,8 @@ const plants = [
         lm: "Semi-sombra",
         size: "Mediana",
         price: 2499,
-        image: "../assets/img/plants/begonia.webp"
+        image: "../assets/img/plants/begonia.webp",
+        quantity: 1
     },
     {
         id: 5,
@@ -47,7 +51,8 @@ const plants = [
         lm: "Semi-sombra",
         size: "Mediana",
         price: 6199,
-        image: "../assets/img/plants/azalea.jpg"
+        image: "../assets/img/plants/azalea.jpg",
+        quantity: 1
     },
     {
         id: 6,
@@ -57,7 +62,8 @@ const plants = [
         lm: "Semi-sombra",
         size: "Chica",
         price: 4499,
-        image: "../assets/img/plants/petunia.jpg"
+        image: "../assets/img/plants/petunia.jpg",
+        quantity: 1
     },
     {
         id: 7,
@@ -67,7 +73,8 @@ const plants = [
         lm: "Semi-sombra",
         size: "Mediana",
         price: 1999,
-        image: "../assets/img/plants/astilbe.jpg"
+        image: "../assets/img/plants/astilbe.jpg",
+        quantity: 1
     },
     {
         id: 8,
@@ -77,7 +84,8 @@ const plants = [
         lm: "Sombra",
         size: "Mediana",
         price: 1899,
-        image: "../assets/img/plants/planta-ara.jpg"
+        image: "../assets/img/plants/planta-ara.jpg",
+        quantity: 1
     },
     {
         id: 9,
@@ -87,7 +95,8 @@ const plants = [
         lm: "Sombra",
         size: "Mediana",
         price: 3199,
-        image: "../assets/img/plants/lirio-de-la-paz.jpeg"
+        image: "../assets/img/plants/lirio-de-la-paz.jpeg",
+        quantity: 1
     },
     {
         id: 10,
@@ -97,7 +106,8 @@ const plants = [
         lm: "Sombra",
         size: "Grande",
         price: 5349,
-        image: "../assets/img/plants/calathea.webp"
+        image: "../assets/img/plants/calathea.webp",
+        quantity: 1
     },
     {
         id: 11,
@@ -107,7 +117,8 @@ const plants = [
         lm: "Sombra",
         size: "Grande",
         price: 4799,
-        image: "../assets/img/plants/helecho-de-maidenhair.jpg"
+        image: "../assets/img/plants/helecho-de-maidenhair.jpg",
+        quantity: 1
     },
     {
         id: 12,
@@ -117,7 +128,8 @@ const plants = [
         lm: "Sombra",
         size: "Chica",
         price: 1199,
-        image: "../assets/img/plants/arbol-de-jade.jpg"
+        image: "../assets/img/plants/arbol-de-jade.jpg",
+        quantity: 1
     },
     {
         id: 13,
@@ -127,6 +139,7 @@ const plants = [
         lm: "Sombra",
         size: "Chica",
         price: 2999,
-        image: "../assets/img/plants/filodendro-hoja-corazon.jpg"
+        image: "../assets/img/plants/filodendro-hoja-corazon.jpg",
+        quantity: 1
     },
 ]

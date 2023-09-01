@@ -36,6 +36,7 @@
                 <a href="#QNA">Preguntas frecuentes</a>
                 <a href="#contactUs">Contacto</a>
             </div>
+
             <div class="shopping-cart">
                 <img class="shopping-cart__icon" src="assets/img/icons/wheelbarrow.png">
                 <div class="shopping-cart__circle">
@@ -50,82 +51,16 @@
             </div>
         </nav>
         
+
         <div class="cart hidden">
-            <div class="cart__items">
-                <div class="cart__item">
-                    <div class="cart__item-img-info">
-                        <div class="cart__item-img-div">
-                            <img src="assets/img/plants/jacinto.png" alt="jacinto.png" class="cart__item-img">
-                        </div>
-                        <div class="cart__item-info">
-                            <p class="cart__item-info-pName">Jacinto</p>
-                            <p class="cart__item-info-pPrice">$1999</p>
-                            <button class="cart__item-info-delBtn">Borrar item</button>
-                        </div>
-                    </div>
-                    <div class="cart__item-buttons">
-                        <button class="cart__item-buttons-addBtn">+</button>
-                        <div class="cart__item-buttons-quantity">2</div>
-                        <button class="cart__item-buttons-minBtn">-</button>
-                    </div>
-                </div>
-                <div class="cart__item">
-                    <div class="cart__item-img-info">
-                        <div class="cart__item-img-div">
-                            <img src="assets/img/plants/jacinto.png" alt="jacinto.png" class="cart__item-img">
-                        </div>
-                        <div class="cart__item-info">
-                            <p class="cart__item-info-pName">Jacinto</p>
-                            <p class="cart__item-info-pPrice">$1999</p>
-                            <button class="cart__item-info-delBtn">Borrar item</button>
-                        </div>
-                    </div>
-                    <div class="cart__item-buttons">
-                        <button class="cart__item-buttons-addBtn">+</button>
-                        <div class="cart__item-buttons-quantity">2</div>
-                        <button class="cart__item-buttons-minBtn">-</button>
-                    </div>
-                </div>
-                <div class="cart__item">
-                    <div class="cart__item-img-info">
-                        <div class="cart__item-img-div">
-                            <img src="assets/img/plants/jacinto.png" alt="jacinto.png" class="cart__item-img">
-                        </div>
-                        <div class="cart__item-info">
-                            <p class="cart__item-info-pName">Jacinto</p>
-                            <p class="cart__item-info-pPrice">$1999</p>
-                            <button class="cart__item-info-delBtn">Borrar item</button>
-                        </div>
-                    </div>
-                    <div class="cart__item-buttons">
-                        <button class="cart__item-buttons-addBtn">+</button>
-                        <div class="cart__item-buttons-quantity">2</div>
-                        <button class="cart__item-buttons-minBtn">-</button>
-                    </div>
-                </div>
-                <div class="cart__item">
-                    <div class="cart__item-img-info">
-                        <div class="cart__item-img-div">
-                            <img src="assets/img/plants/jacinto.png" alt="jacinto.png" class="cart__item-img">
-                        </div>
-                        <div class="cart__item-info">
-                            <p class="cart__item-info-pName">Jacinto</p>
-                            <p class="cart__item-info-pPrice">$1999</p>
-                            <button class="cart__item-info-delBtn">Borrar item</button>
-                        </div>
-                    </div>
-                    <div class="cart__item-buttons">
-                        <button class="cart__item-buttons-addBtn">+</button>
-                        <div class="cart__item-buttons-quantity">2</div>
-                        <button class="cart__item-buttons-minBtn">-</button>
-                    </div>
-                </div>
-            </div>
+            <p class="cart__delete-button">Borrar todo</p>
+
+            <div class="cart__items"></div>
 
             <div class="cart__info">
                 <div class="cart__info-box">
                     <p class="cart__info-box-p">Subtotal</p>
-                    <p class="cart__info-box-p">$7996</p>
+                    <p class="cart__info-box-p subtotal">$0</p>
                 </div>
                 <div class="cart__info-line"></div>
                 <div class="cart__info-box">
@@ -140,11 +75,21 @@
                 <div class="cart__info-line"></div>
                 <div class="cart__info-box">
                     <p class="cart__info-box-total">Total</p>
-                    <p class="cart__info-box-totalPrice">$9096</p>
+                    <p class="cart__info-box-totalPrice">$0</p>
                 </div>
 
                 <button class="cart__info-btn">Finalizar compra</button>
             </div>
+        </div>
+
+
+        <div class="navbar__links-mq hidden">
+            <img src="assets/img/star.png" alt="star.png">
+            <a href="#">Home</a>
+            <a href="#store">Productos</a>
+            <a href="#aboutUs">Sobre nosotros</a>
+            <a href="#QNA">Preguntas frecuentes</a>
+            <a href="#contactUs">Contacto</a>
         </div>
     </header>
 
@@ -165,9 +110,9 @@
                 <div class="store__filters-size">
                     <p class="store__filters-p">Tamaño</p>
                     <div class="store__filters-sizeBtns">
-                        <button class="store__filters-btn">Chicas</button>
-                        <button class="store__filters-btn">Medianas</button>
-                        <button class="store__filters-btn">Grandes</button>
+                        <button data-size="Chica" class="store__filters-btn">Chicas</button>
+                        <button data-size="Mediana" class="store__filters-btn">Medianas</button>
+                        <button data-size="Grande" class="store__filters-btn">Grandes</button>
                     </div>
                 </div>
                 <div class="store__filters-lm">

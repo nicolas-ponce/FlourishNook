@@ -45,6 +45,9 @@
     .contactUs__form-nameInput,
     .contactUs__form-msgInput,
     .contactUs__form-btn {
+        width: 100%;
+    }
+    .contactUs__form-btn {
         width: 90%;
     }
 

@@ -716,6 +716,15 @@ header {
     color: var(--creamWhite);
     background-color: var(--darkGreen);
 }
+.card__add-to-cartBtn-added {
+    background-color: var(--darkGreen);
+    color: var(--white);
+    cursor:auto;
+}
+.card__add-to-cartBtn-added:hover {
+    color: var(--white);
+    background-color: var(--darkGreen);
+}
 
 
 /* About Us */
@@ -918,7 +927,7 @@ header {
     align-items: center;
     justify-content: center;
     background-color: var(--lightGreen);
-    gap: 1.2rem;
+    gap: 2.8rem;
     padding: 4rem 0;
     border-radius: 0 .8rem .8rem 0;
 }
@@ -932,7 +941,7 @@ header {
 .contactUs__form-nameInput,
 .contactUs__form-msgInput,
 .contactUs__form-btn {
-    width: 70%;
+    width: 100%;
     background-color: var(--white);
     border: 1px solid var(--darkGreen);
     border-radius: .8rem;
@@ -950,6 +959,7 @@ header {
 
 .contactUs__form-btn {
     cursor: pointer;
+    width: 90%;
     transition: all .2s;
     font-size: 2rem;
     letter-spacing: .1rem;
@@ -960,6 +970,60 @@ header {
     background-color: var(--lightGreen);
     color: var(--black);
 }
+
+
+.form-control {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    margin: auto;
+}
+
+
+.form-control img {
+    visibility: hidden;
+    position: absolute;
+    top: .9rem;
+    right: 1.2rem;
+    width: 2rem;
+}
+
+.form-control small {
+    position: absolute;
+    visibility: hidden;
+    bottom: -1.8rem;
+    left: .8rem;
+    font-size: 1.2rem;
+    font-family: var(--subHeadingFont);
+    color: var(--darkRed);
+}
+
+
+.form-control.error input,
+.form-control.error textarea {
+    border: 1px solid var(--darkRed);
+}
+.form-control.error small {
+    visibility: visible;
+}
+.form-control.error img:nth-child(3) {
+    visibility: visible;
+}
+
+.form-control.success input,
+.form-control.success textarea {
+    border: 1px solid #4bae4f;
+}
+.form-control.success small {
+    visibility: hidden;
+}
+.form-control.success img:nth-child(2) {
+    visibility: visible;
+} 
+
+
 
 
 /* Footer */

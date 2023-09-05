@@ -118,9 +118,9 @@
                 <div class="store__filters-lm">
                     <p class="store__filters-p">Necesidad lumínica</p>
                     <div class="store__filters-lmBtns">
-                        <button class="store__filters-btn">Luz directa</button>
-                        <button class="store__filters-btn">Semi-sombra</button>
-                        <button class="store__filters-btn">Sombra</button>
+                        <button data-lm="Luz directa" class="store__filters-btn">Luz directa</button>
+                        <button data-lm="Semi-sombra" class="store__filters-btn">Semi-sombra</button>
+                        <button data-lm="Sombra" class="store__filters-btn">Sombra</button>
                     </div>
                 </div>
             </div>
@@ -240,12 +240,32 @@
                     </div>
                 </div>
 
-                <form class="contactUs__form" method="post">
-                    <input class="contactUs__form-nameInput" type="text" id="name" placeholder="Nombre">
+                <form class="contactUs__form">
+                    <div class="form-control">
+                        <input class="contactUs__form-nameInput" type="text" id="name" placeholder="Nombre">
+                        <img src="assets/img/icons/correct.png">
+                        <img src="assets/img/icons/error.png">
+                        <small>Error message</small>
+                    </div>
+
+                    <div class="form-control">
+                        <input class="contactUs__form-emailInput" type="email" id="email" placeholder="Email">
+                        <img src="assets/img/icons/correct.png">
+                        <img src="assets/img/icons/error.png">
+                        <small>Error message</small>
+                    </div>
+
+                    <div class="form-control">
+                        <textarea id="msg" class="contactUs__form-msgInput" placeholder="Mensaje o consulta"></textarea>
+                        <img src="assets/img/icons/correct.png">
+                        <img src="assets/img/icons/error.png">
+                        <small>Error message</small>
+                    </div>
+
     
-                    <input class="contactUs__form-emailInput" type="email" id="email" placeholder="Email">
+
     
-                    <textarea class="contactUs__form-msgInput" placeholder="Mensaje o consulta"></textarea>
+
 
                     <input class="contactUs__form-btn" type="submit" value="Enviar">
                 </form>

@@ -44,34 +44,17 @@ const filtersBtn = document.querySelectorAll(".store__filters-btn");
 const filterProducts = () => {
     for (let i = 0; i < filtersBtn.length; i++) {
         filtersBtn[i].addEventListener("click", () => {
-            console.log(filtersBtn[i].dataset.size);
-
+            
             renderStoreProducts(filtersBtn[i].dataset.size);
+            renderStoreProducts(filtersBtn[i].dataset.lm);
         })
     }
 }
 filterProducts();
 
-const renderStoreProducts = (filter) => {
-    let filteredProducts = plants.filter(plant => plant.size === filter);
 
-    if(filteredProducts.length === 0) {
-        plants.map((plant) => {
-            renderProductForStore(plant);
-        });
-        return;
-    } else {
-        renderProductForStore(filteredProducts);
-    }
-
-    console.log(filteredProducts);
-
-
-
-}
-
-
-const renderProductForStore = (arr) => {
+// Template de productos de la tienda
+const storeProductTemplate = (arr) => {
     let {image,name,sciName,description,size,lm,price,id} = arr;
 
     const card = document.createElement("DIV");
@@ -94,11 +77,34 @@ const renderProductForStore = (arr) => {
             <p class="card__price">$${price}</p>
             <button onclick="addItemToCart(${id})" class="card__add-to-cartBtn">Añadir al carrito</button>
         </div>
-    `
+    `;
     cardList.appendChild(card);
     card.classList.add("card");
     return;
 }
+
+
+// Renderizar productos en la tienda
+const renderStoreProducts = (filter) => {
+    let filteredProducts = plants.filter(plant => plant.size === filter || plant.lm === filter);
+
+
+    if(filteredProducts.length === 0) {
+        plants.map((plant) => {
+            storeProductTemplate(plant);
+        });
+        return;
+    } else {
+        cardList.innerHTML = '';
+        filteredProducts.map((filteredProduct) => {
+            storeProductTemplate(filteredProduct);
+        });
+    }
+}
+renderStoreProducts();
+
+
+
 
 // -------------------------------------------------------------------
 
@@ -116,8 +122,8 @@ const cartIsEmpty = () => {if(cartList.length === 0) return true;}
 
 
 
-
-const displayCart = () => {
+// Renderizar items del carrito
+const renderCartItems = () => {
     let j = 0;
     let subtotal = 0;
     let total = 0;
@@ -157,7 +163,38 @@ const displayCart = () => {
                 `
             )
         }).join('');
+        
     }
+}
+
+// Añadir productos al carrito desde la store
+const addToCartBtn = document.querySelectorAll(".card__add-to-cartBtn");
+
+const addItemToCart = (id) => {
+    plants.map(plant => {
+        if(cartList.some((cL) => cL.id === plant.id)) {
+            return;
+        }
+
+        if (id === plant.id) {
+            let btn = addToCartBtn[id-1];
+            btn.innerHTML = "Añadido!";
+            btn.classList.add("card__add-to-cartBtn-added");
+
+            cartList.push(plant);
+            refreshCart();
+            changeShoppingCartValue();
+            return;
+        }
+    })
+}
+
+// Cambiar la cantidad de productos en total del ícono del carrito
+const shoppingCartValue = document.querySelector(".shopping-cart__number");
+
+const changeShoppingCartValue = () => {
+    shoppingCartValue.innerHTML = `${cartList.length}`;
+    renderCartItems();
 }
 
 
@@ -171,6 +208,7 @@ const addQuantity = (id) => {
     })
     refreshCart();
 }
+
 // Sacar productos cuando se está dentro del carrito (sin eliminar)
 const susQuantity = (id) => {
     cartList.forEach(item => {
@@ -181,46 +219,28 @@ const susQuantity = (id) => {
     refreshCart();
 }
 
-// Añadir productos al carrito desde la store
-const addItemToCart = (id) => {
-    plants.map(plant => {
-        if(cartList.some((cL) => cL.id === plant.id)) {
-            return;
-        }
-
-        if (id === plant.id) {
-            console.log(cartList.some((cL) => cL.id === plant.id))
-
-            cartList.push(plant);
-            console.log(cartList);
-            refreshCart();
-            changeShoppingCartValue();
-            return;
-        }
-    })
+// Resetear cantidad de productos en el carrito
+const resetQuantity = (arr) => {
+    for (let i = 0; i < arr.length; i++) {
+        arr[i].quantity = 1;
+    }
 }
 
 
-// Eliminar productos del carrito
+// Eliminar producto del carrito
 const delElement = (j) => {
     plants.map(plant => {
         if(j === plant.id) {
+            let btn = addToCartBtn[j-1];
+            btn.innerHTML = "Añadir al carrito";
+            btn.classList.remove("card__add-to-cartBtn-added");
+
+            resetQuantity(cartList);
             cartList.splice(j, 1);
-            console.log(cartList);
         }
     })
     refreshCart();
 }
-
-
-// Cambiar la cantidad de productos en total en el carrito
-const shoppingCartValue = document.querySelector(".shopping-cart__number");
-
-const changeShoppingCartValue = () => {
-    shoppingCartValue.innerHTML = `${cartList.length}`;
-    displayCart();
-}
-
 
 
 
@@ -229,18 +249,87 @@ const changeShoppingCartValue = () => {
 const deleteBtn = document.querySelector(".cart__delete-button");
 
 const deleteItems = () => {
+    for (let i = 0; i < plants.length; i++) {
+        let btn = addToCartBtn[i];
+        btn.innerHTML = "Añadir al carrito";
+        btn.classList.remove("card__add-to-cartBtn-added");
+    }
+    resetQuantity(cartList);
     cartList = [];
     refreshCart();
-    console.log(cartList);
 }
 
 
 
-// Función para refrescar el carrito
+// Refrescar el carrito
 const refreshCart = () => {
-    displayCart();
+    renderCartItems();
     changeShoppingCartValue();
 }
+
+
+
+
+
+
+
+
+/*
+Contacto
+*/
+const contactForm = document.querySelector(".contactUs__form");
+
+const contactError = document.querySelector(".contactUs__error");
+
+const nameInput = document.querySelector(".contactUs__form-nameInput");
+const emailInput = document.querySelector(".contactUs__form-emailInput");
+const msgInput = document.querySelector(".contactUs__form-msgInput");
+
+const contactBtn = document.querySelector(".contactUs__form-btn");
+
+
+
+// Chekear los errores de cada input
+const checkInputs = () => {
+    const nameValue = nameInput.value.trim();
+    const emailValue = emailInput.value.trim();
+    const msgValue = msgInput.value.trim();
+
+    nameValue === '' ? showFormError(nameInput,"Por favor, ingrese su nombre") : showSuccess(nameInput);
+    nameValue.length < 3 ? showFormError(nameInput, "Su nombre no puede tener menos de 3 caracteres") : showSuccess(nameInput);
+
+    emailValue === '' ? showFormError(emailInput,"Por favor, ingrese su email") : showSuccess(emailInput);
+    emailValue.length < 6 ? showFormError(emailInput,"Su email debería contener mas de 6 caracteres") : showSuccess(emailInput);
+
+    msgValue === '' ? showFormError(msgInput,"Por favor, escriba su mensaje o consulta") : showSuccess(msgInput);
+    msgValue.length <= 10 ? showFormError(msgInput,"Su consulta debe de superar los 10 caracteres") : showSuccess(msgInput);
+}
+
+// Mostrar mensaje de error segpun el input
+const showFormError = (input, message) => {
+    const formControl = input.parentElement;
+    const small = formControl.querySelector("small");
+    formControl.className = "form-control error";
+    small.innerText = message;
+}
+
+// Mostrar éxito en la validación del input del formulario
+const showSuccess = (input) => {
+    const formControl = input.parentElement;
+    formControl.className = "form-control success";
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -254,7 +343,7 @@ const refreshCart = () => {
 // Init App
 const initApp = () => {
     // Renderizar productos de la tienda
-    renderStoreProducts();
+
 
     // Cambiar el valor de cantidad de productos dentro del carrito del navbar
     changeShoppingCartValue();
@@ -267,6 +356,12 @@ const initApp = () => {
 
     // Borrar todos los items del carrito
     deleteBtn.addEventListener("click", () => {deleteItems()});
+
+    // Validación del formulario
+    contactForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        checkInputs();
+    })
 }
 
 initApp();

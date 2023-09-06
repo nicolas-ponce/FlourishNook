@@ -125,8 +125,6 @@ const storeProductTemplate = (arr) => {
 }
 
 
-
-
 // Renderizar productos en la tienda (según filtros aplicados)
 const renderStoreProducts = (filter) => {
     let filteredProducts = plants.filter(plant => plant.size === filter || plant.lm === filter);

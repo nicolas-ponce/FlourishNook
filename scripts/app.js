@@ -165,7 +165,6 @@ const cartIsEmpty = () => {if(cartList.length === 0) return true;}
 
 // Renderizar items del carrito
 const renderCartItems = () => {
-    let j = 0;
     let subtotal = 0;
     let total = 0;
     if(cartIsEmpty()) {
@@ -192,7 +191,7 @@ const renderCartItems = () => {
                         <div class="cart__item-info">
                             <p class="cart__item-info-pName">${name}</p>
                             <p class="cart__item-info-pPrice">$${price}</p>
-                            <button class="cart__item-info-delBtn" onclick="delElement(${j++})">Borrar item</button>
+                            <button class="cart__item-info-delBtn" onclick="delElement(${id})">Borrar item</button>
                         </div>
                     </div>
                     <div class="cart__item-buttons">
@@ -269,19 +268,22 @@ const resetQuantity = (arr) => {
 
 
 // Eliminar producto del carrito
-const delElement = (j) => {
-    plants.map(plant => {
-        if(j === plant.id) {
-            let btn = addToCartBtn[j-1];
+const delElement = (productId) => {
+    const index = cartList.findIndex(item => item.id === productId);
+
+    if (index !== -1) {
+        cartList.splice(index, 1);
+        
+        const productIndex = plants.findIndex(plant => plant.id === productId);
+        if (productIndex !== -1) {
+            const btn = addToCartBtn[productIndex];
             btn.innerHTML = "Añadir al carrito";
             btn.classList.remove("card__add-to-cartBtn-added");
-
-            resetQuantity(cartList);
-            cartList.splice(j, 1);
         }
-    })
-    refreshCart();
+        refreshCart();
+    }
 }
+
 
 
 

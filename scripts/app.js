@@ -1,47 +1,92 @@
 /*
-Mostrar o cerrar carrito de compras / Menú despegable
+Crear las variables del documento
 */
-const shoppingCart = document.querySelector(".shopping-cart");
-const cart = document.querySelector(".cart");
+
+// Preguntas frecuentes
+const qnaBox = document.querySelectorAll(".qna__box");
+const qnaAnswer = document.querySelectorAll(".qna__answer");
+// Menú hamburguesa y menú
 const hamburger = document.querySelector(".hamburger");
 const menu = document.querySelector(".navbar__links-mq");
+// Store (Filtros)
+const selectElement = document.querySelector(".store__filters-orderBy-select");
+const sizeFiltersBtn = document.querySelectorAll(".store__filters-sizeBtn");
+const lmFiltersBtn = document.querySelectorAll(".store__filters-lmBtn");
+const cardList = document.querySelector(".store__cards");
+// Carrito (Exterior)
+const cart = document.querySelector(".cart");
+const shoppingCart = document.querySelector(".shopping-cart");
+const shoppingCartValue = document.querySelector(".shopping-cart__number");
+// Carrito (Interior)
+const cartItems = document.querySelector(".cart__items");
+const deleteBtn = document.querySelector(".cart__delete-button");
+// Contacto
+const contactForm = document.querySelector(".contactUs__form");
+const nameInput = document.querySelector(".contactUs__form-nameInput");
+const emailInput = document.querySelector(".contactUs__form-emailInput");
+const msgInput = document.querySelector(".contactUs__form-msgInput");
+const contactError = document.querySelector(".contactUs__error");
+const contactBtn = document.querySelector(".contactUs__form-btn");
+
+
+
+
+
+// -------------------------------------------------------------------
+
+// Crear lista de items del carrito
+let cartList = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+// Guardar la lista de items en el localStorage
+const saveToLocalStorage = () => {
+    localStorage.setItem('cartItems', JSON.stringify(cartList));
+}
+
+
+// -------------------------------------------------------------------
+
+/*
+Mostrar o cerrar carrito de compras / Menú despegable
+*/
 
 // Mostrar/ocultar según elemento activo para menú despegable y carrito
 const toggleHidden = (toggle, active) => {
-    if(active.classList.contains("hidden")){
+    if (active.classList.contains("hidden")) {
         toggle.classList.toggle("hidden");
-        return;
     } else {
         active.classList.toggle("hidden");
         toggle.classList.toggle("hidden");
     }
 }
 
+
+
+
+
 // -------------------------------------------------------------------
 
 /*
 Preguntas frecuentes
 */
-const qnaBox = document.querySelectorAll(".qna__box");
-const qnaAnswer = document.querySelectorAll(".qna__answer");
 
+// Abre y cierra el box de Q&A
 for(let i = 0; i < qnaBox.length; i++) {
     qnaBox[i].addEventListener("click", () => {
         qnaAnswer[i].classList.toggle("hidden");
     });
 }
 
+
+
+
+
 // -------------------------------------------------------------------
 
 /*
-Renderizar productos
+Filtrado de productos
 */
-const cardList = document.querySelector(".store__cards");
 
-const sizeFiltersBtn = document.querySelectorAll(".store__filters-sizeBtn");
-const lmFiltersBtn = document.querySelectorAll(".store__filters-lmBtn");
-
-// Filtrar los productos
+// Filtrar los productos según tamaño e iluminación
 const filterProducts = () => {
     for (let i = 0; i < sizeFiltersBtn.length; i++) {
         sizeFiltersBtn[i].addEventListener("click", () => {
@@ -71,9 +116,7 @@ const orderByPrice = (order) => {
 
 
 
-// Manejar el selector de orden de precios
-const selectElement = document.querySelector(".store__filters-orderBy-select");
-
+// EvLi - Manejar el selector de orden de precios
 selectElement.addEventListener("change", () => {
     const selectedOption = selectElement.value;
     switch (selectedOption) {
@@ -91,9 +134,13 @@ selectElement.addEventListener("change", () => {
 });
 
 
+/*
+Renderizado de productos de la store
+*/
+
 // Template de productos de la tienda
 const storeProductTemplate = (arr) => {
-    let {image,name,sciName,description,size,lm,price,id} = arr;
+    let {image, name, sciName, description, size, lm, price, id} = arr;
 
     const card = document.createElement("DIV");
     card.innerHTML = `
@@ -118,31 +165,29 @@ const storeProductTemplate = (arr) => {
     `;
     cardList.appendChild(card);
     card.classList.add("card");
-    return;
 }
-
-
-
 
 
 
 // Renderizar productos en la tienda (según filtros aplicados)
 const renderStoreProducts = (filter) => {
-    let filteredProducts = plants.filter(plant => plant.size === filter || plant.lm === filter);
-
+    const filteredProducts = plants.filter(plant => plant.size === filter || plant.lm === filter);
+    cardList.innerHTML = '';
 
     if(filteredProducts.length === 0) {
+        cardList.innerHTML = '';
         plants.map((plant) => {
             storeProductTemplate(plant);
-        });
+        })
         return;
     }
-    cardList.innerHTML = '';
-    filteredProducts.map((filteredProduct) => {
+
+    filteredProducts.forEach((filteredProduct) => {
         storeProductTemplate(filteredProduct);
     });
 }
 renderStoreProducts();
+
 
 
 
@@ -152,22 +197,12 @@ renderStoreProducts();
 /*
 Carrito
 */
-const cartItems = document.querySelector(".cart__items");
-
-// Crear lista de items del carrito
-let cartList = JSON.parse(localStorage.getItem('cartItems')) || [];
-
-
-// Chequear si el carrito está vacío
-const cartIsEmpty = () => {if(cartList.length === 0) return true;}
-
-
 
 // Renderizar items del carrito
 const renderCartItems = () => {
     let subtotal = 0;
     let total = 0;
-    if(cartIsEmpty()) {
+    if(cartList.length === 0) {
         cartItems.innerHTML = "<h6>El carrito está vacío</h6>";
     } else {
         cartItems.innerHTML = cartList.map((item)=> {
@@ -203,13 +238,16 @@ const renderCartItems = () => {
                 `
             )
         }).join('');
-        
+        saveToLocalStorage();
     }
 }
 
-// Añadir productos al carrito desde la store
+
+
+// Traer el botón de añadir al carrito después de renderizado el producto (gracias Alba)
 const addToCartBtn = document.querySelectorAll(".card__add-to-cartBtn");
 
+// Añadir productos al carrito desde la store
 const addItemToCart = (id) => {
     plants.map(plant => {
         if(cartList.some((cL) => cL.id === plant.id)) {
@@ -229,9 +267,9 @@ const addItemToCart = (id) => {
     })
 }
 
-// Cambiar la cantidad de productos en total del ícono del carrito
-const shoppingCartValue = document.querySelector(".shopping-cart__number");
 
+
+// Cambiar la cantidad de productos en total del ícono del carrito
 const changeShoppingCartValue = () => {
     shoppingCartValue.innerHTML = `${cartList.length}`;
     renderCartItems();
@@ -249,22 +287,31 @@ const addQuantity = (id) => {
     refreshCart();
 }
 
+
+
 // Sacar productos cuando se está dentro del carrito (sin eliminar)
 const susQuantity = (id) => {
     cartList.forEach(item => {
         if(item.quantity !== 1 && item.id === id) {
-            item.quantity--; 
+            item.quantity--;
+            return;
+        }
+        if(item.quantity === 1  && item.id === id) {
+            delElement(item.id);
         }
     })
     refreshCart();
 }
 
-// Resetear cantidad de productos en el carrito
+
+
+// Restablecer la cantidad de productos en el carrito
 const resetQuantity = (arr) => {
     for (let i = 0; i < arr.length; i++) {
         arr[i].quantity = 1;
     }
 }
+
 
 
 // Eliminar producto del carrito
@@ -286,11 +333,7 @@ const delElement = (productId) => {
 
 
 
-
-
 // Borrar todos los productos del carrito
-const deleteBtn = document.querySelector(".cart__delete-button");
-
 const deleteItems = () => {
     for (let i = 0; i < plants.length; i++) {
         let btn = addToCartBtn[i];
@@ -308,47 +351,20 @@ const deleteItems = () => {
 const refreshCart = () => {
     renderCartItems();
     changeShoppingCartValue();
+    saveToLocalStorage();
 }
 
 
 
 
 
-
-
+// -------------------------------------------------------------------
 
 /*
 Contacto
 */
-const contactForm = document.querySelector(".contactUs__form");
 
-const contactError = document.querySelector(".contactUs__error");
-
-const nameInput = document.querySelector(".contactUs__form-nameInput");
-const emailInput = document.querySelector(".contactUs__form-emailInput");
-const msgInput = document.querySelector(".contactUs__form-msgInput");
-
-const contactBtn = document.querySelector(".contactUs__form-btn");
-
-
-
-// Chekear los errores de cada input
-const checkInputs = () => {
-    const nameValue = nameInput.value.trim();
-    const emailValue = emailInput.value.trim();
-    const msgValue = msgInput.value.trim();
-
-    nameValue === '' ? showFormError(nameInput,"Por favor, ingrese su nombre") : showSuccess(nameInput);
-    nameValue.length < 3 ? showFormError(nameInput, "Su nombre no puede tener menos de 3 caracteres") : showSuccess(nameInput);
-
-    emailValue === '' ? showFormError(emailInput,"Por favor, ingrese su email") : showSuccess(emailInput);
-    emailValue.length < 6 ? showFormError(emailInput,"Su email debería contener mas de 6 caracteres") : showSuccess(emailInput);
-
-    msgValue === '' ? showFormError(msgInput,"Por favor, escriba su mensaje o consulta") : showSuccess(msgInput);
-    msgValue.length <= 10 ? showFormError(msgInput,"Su consulta debe de superar los 10 caracteres") : showSuccess(msgInput);
-}
-
-// Mostrar mensaje de error segpun el input
+// Mostrar mensaje de error según el input
 const showFormError = (input, message) => {
     const formControl = input.parentElement;
     const small = formControl.querySelector("small");
@@ -356,11 +372,37 @@ const showFormError = (input, message) => {
     small.innerText = message;
 }
 
+
+
 // Mostrar éxito en la validación del input del formulario
 const showSuccess = (input) => {
     const formControl = input.parentElement;
     formControl.className = "form-control success";
 }
+
+
+
+// Checkear los errores de cada input y mostrar el respectivo mensaje
+const checkInputs = () => {
+    const nameValue = nameInput.value.trim();
+    const emailValue = emailInput.value.trim();
+    const msgValue = msgInput.value.trim();
+
+    // Para el nombre
+    nameValue === '' ? showFormError(nameInput,"Por favor, ingrese su nombre") : showSuccess(nameInput);
+    nameValue.length < 3 ? showFormError(nameInput, "Su nombre no puede tener menos de 3 caracteres") : showSuccess(nameInput);
+
+    // Para el email
+    emailValue === '' ? showFormError(emailInput,"Por favor, ingrese su email") : showSuccess(emailInput);
+    emailValue.length < 6 ? showFormError(emailInput,"Su email debería contener mas de 6 caracteres") : showSuccess(emailInput);
+
+    // Para el textarea (mensaje)
+    msgValue === '' ? showFormError(msgInput,"Por favor, escriba su mensaje o consulta") : showSuccess(msgInput);
+    msgValue.length <= 10 ? showFormError(msgInput,"Su consulta debe de superar los 10 caracteres") : showSuccess(msgInput);
+}
+
+
+
 
 
 
@@ -385,20 +427,24 @@ const showSuccess = (input) => {
 
 // Init App
 const initApp = () => {
-    // Renderizar productos de la tienda
-
 
     // Cambiar el valor de cantidad de productos dentro del carrito del navbar
     changeShoppingCartValue();
 
     // EvLi - Carrito de compras
-    shoppingCart.addEventListener("click", () => {toggleHidden(cart, menu)});
+    shoppingCart.addEventListener("click", () => {
+        toggleHidden(cart, menu)
+    });
 
     // EvLi - Menú despegable
-    hamburger.addEventListener("click", () => {toggleHidden(menu, cart)});
+    hamburger.addEventListener("click", () => {
+        toggleHidden(menu, cart)
+    });
 
     // Borrar todos los items del carrito
-    deleteBtn.addEventListener("click", () => {deleteItems()});
+    deleteBtn.addEventListener("click", () => {
+        deleteItems()
+    });
 
     // Validación del formulario
     contactForm.addEventListener("submit", (e) => {
@@ -407,6 +453,8 @@ const initApp = () => {
     })
 }
 
+
+
+
+
 initApp();
-
-

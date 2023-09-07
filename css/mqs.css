@@ -229,6 +229,12 @@
     }
 
 
+    .store__filters-seeAllBtn {
+        margin: 1.6rem auto 0;
+        align-self: center;
+        justify-self: center;
+    }
+
     /* About Us */
     .aboutUs__div1-img,
     .aboutUs__div2-img {

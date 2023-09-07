@@ -12,6 +12,7 @@ const menu = document.querySelector(".navbar__links-mq");
 const selectElement = document.querySelector(".store__filters-orderBy-select");
 const sizeFiltersBtn = document.querySelectorAll(".store__filters-sizeBtn");
 const lmFiltersBtn = document.querySelectorAll(".store__filters-lmBtn");
+const seeAllBtn = document.querySelector(".store__filters-seeAllBtn");
 const cardList = document.querySelector(".store__cards");
 // Carrito (Exterior)
 const cart = document.querySelector(".cart");
@@ -58,7 +59,15 @@ const toggleHidden = (toggle, active) => {
         toggle.classList.toggle("hidden");
     }
 }
+// (!cart.contains(e.target) && e.target !== shoppingCart)
+// (!menu.contains(e.target) && e.target !== hamburger)
 
+const returnShoppingCartChildren = () => {
+    for (let i = 0; i < shoppingCart.childNodes.length; i++) {
+        const papa = shoppingCart.childNodes[i];
+        return papa;
+    }
+}
 
 
 
@@ -96,6 +105,10 @@ const filterProducts = () => {
             renderStoreProducts(lmFiltersBtn[i].dataset.lm);
         });
     }
+    seeAllBtn.addEventListener("click", () => {
+        renderStoreProducts(plants);
+    })
+
 }
 filterProducts();
 
@@ -113,6 +126,9 @@ const orderByPrice = (order) => {
         storeProductTemplate(plant);
     });
 };
+
+
+
 
 
 
@@ -171,7 +187,7 @@ const storeProductTemplate = (arr) => {
 
 // Renderizar productos en la tienda (según filtros aplicados)
 const renderStoreProducts = (filter) => {
-    const filteredProducts = plants.filter(plant => plant.size === filter || plant.lm === filter);
+    let filteredProducts = plants.filter(plant => plant.size === filter || plant.lm === filter);
     cardList.innerHTML = '';
 
     if(filteredProducts.length === 0) {
@@ -450,6 +466,14 @@ const initApp = () => {
     contactForm.addEventListener("submit", (e) => {
         e.preventDefault();
         checkInputs();
+    })
+
+    // Cierra el menú al hacer click fuera de este
+    document.addEventListener("click", (e) => {
+        if (!menu.contains(e.target) && e.target !== hamburger) {
+            menu.classList.add("hidden");
+            console.log("Hola");
+        }
     })
 }
 
